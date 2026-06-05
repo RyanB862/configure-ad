@@ -66,15 +66,19 @@ Client 1 VM is setup. It's in the same region US EAST 2 and the same active dire
 
 <img width="917" height="521" alt="Screenshot 2026-06-05 141542" src="https://github.com/user-attachments/assets/c1bf91a0-9fb8-488e-98fd-a2b9755a8685" />
 
-Here I click into DC 1 and then click network settings. Here I click ipconfig then switch the Private IP Address from Dynamic to Static.
+Here I click into DC 1 and then click network settings. 
+Here I click ipconfig then switch the Private IP Address from Dynamic to Static.
 A static IP ensures the Domain Controller's address never changes, allowing clients to consistently locate authentication and DNS services
 
 <img width="434" height="485" alt="Screenshot 2026-06-05 142118" src="https://github.com/user-attachments/assets/e2596926-caac-4365-8090-4c64aa7f31fe" />
+
 I then log into DC 1 with Remote Desktop Protocol (RDP) using Admin username and password
 Accessing the server allows configuration of Active Directory and network settings.
 
 <img width="380" height="199" alt="image" src="https://github.com/user-attachments/assets/96a86d41-e4ca-4110-83ee-1b4789e9465b" />
+
 <img width="501" height="547" alt="Screenshot 2026-06-05 142954" src="https://github.com/user-attachments/assets/66f53d91-2d94-486d-9da3-92a2e64c155e" />
+
 Once inside the DC VM I click the start menu then type run. I then type wf.msc to disable the firewall. Switch to OFF
 Disabling the firewall temporarily removes network restrictions so connectivity issues can be tested and verified more easily
 
