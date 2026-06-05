@@ -101,8 +101,10 @@ Still inside powershell I run ipconfig /all on Client-1
 This command displays detailed network settings, including the DNS server being used.
 
 <h2>Deploying Active Directory</h2>
+<h2>Part One: Installation and Domain Join</h2>
 
-
+<h2>Summary</h2>
+"I deployed Active Directory Domain Services, created a new domain forest, configured administrative accounts and organizational units, joined a Windows 10 client to the domain, and organized domain resources using Active Directory Users and Computers. This established a centralized identity management environment similar to what is used in enterprise organizations
 
 
 
