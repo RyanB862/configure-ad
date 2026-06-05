@@ -3,7 +3,7 @@
 </p>
 
 <h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
-This tutorial outlines the implementation of on-premises Active Directory within Azure Virtual Machines.<br />
+In this lab, I deployed a Windows Server Domain Controller and a Windows 10 client in Azure, configured a shared virtual network, assigned a static IP to the Domain Controller, configured DNS on the client to point to the Domain Controller, and verified connectivity using ping and ipconfig. This established the foundation required for deploying and managing Active Directory.<br />
 
 
 <h2>Environments and Technologies Used</h2>
