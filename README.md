@@ -107,80 +107,100 @@ This command displays detailed network settings, including the DNS server being 
 I deployed Active Directory Domain Services, created a new domain forest, configured administrative accounts and organizational units, joined a Windows 10 client to the domain, and organized domain resources using Active Directory Users and Computers. This established a centralized identity management environment similar to what is used in enterprise organizations
 
 <img width="839" height="737" alt="Screenshot 2026-06-08 103748" src="https://github.com/user-attachments/assets/fb4f604f-6e1d-40be-ac7a-201955f89528" />
+
 First I log into DC-1 using Remote Desktop Protocol (RDP Port 3389) and use the Public IP Address. 
 Once inside I click start menu then Server Manager.
 
 <img width="723" height="508" alt="Screenshot 2026-06-08 104156" src="https://github.com/user-attachments/assets/32d0b40d-f7c8-4d5d-b6bb-a05562213b2f" />
 <img width="714" height="506" alt="Screenshot 2026-06-08 104243" src="https://github.com/user-attachments/assets/360e17f4-9067-4cee-b9a2-460454fa5e45" />
+
 Here I click Add Roles and Features. I click Next unitl I see the Active Directory Domain Services and I check this box then select Add Features
 
 <img width="725" height="510" alt="Screenshot 2026-06-08 104645" src="https://github.com/user-attachments/assets/f4c8d1eb-4763-494b-b5b2-41161cf606ee" />
 <img width="727" height="512" alt="Screenshot 2026-06-08 104812" src="https://github.com/user-attachments/assets/c717d39c-4719-4b54-b198-186e42d14365" />
+
 I click next until I see this page then select install
 
 <img width="318" height="250" alt="Screenshot 2026-06-08 105028" src="https://github.com/user-attachments/assets/48e2aeb9-b3f7-457b-9025-8f8cefd7d133" />
+
 Back in server manager I then click the "Flag" then I click the link to "promote this server to a dommain controller"
 Promoting the server creates the first Domain Controller responsible for managing the Active Directory environment.
 
 <img width="700" height="504" alt="Screenshot 2026-06-08 105334" src="https://github.com/user-attachments/assets/54378198-5868-4cd6-8fd9-08891e395852" />
+
 Here I click add new forest and fill "mydomain.com"
 The forest establishes the highest-level Active Directory structure that stores all domain objects and configurations.
 
 <img width="696" height="504" alt="Screenshot 2026-06-08 105650" src="https://github.com/user-attachments/assets/241ae692-b454-464d-8b75-d558d0ea3b46" />
+
 Here I create a password for DSRM. DSRM (Directory Services Restore Mode) is a specialized boot mode for Windows Server Domain Controllers (DCs).
 It allows administrators to access and repair the Active Directory (AD) database when it is corrupted or offline. Then click next through the remaining prompts
 
 <img width="700" height="509" alt="Screenshot 2026-06-08 110407" src="https://github.com/user-attachments/assets/9fbe81c0-d9eb-4abe-9a16-47de69ad75f5" />
 <img width="397" height="215" alt="Screenshot 2026-06-08 111203" src="https://github.com/user-attachments/assets/beea54e1-f3e8-46df-baeb-ef96b026716c" />
+
 Then click install. After the install it will restart. I then log in using the Domain Credentials.
 Logging in with domain credentials verifies that Active Directory was successfully installed and configured
 
 <img width="597" height="547" alt="Screenshot 2026-06-08 111830" src="https://github.com/user-attachments/assets/236c17e1-5a4e-4446-bf58-c3549481ba61" />
+
 Inside DC-1. I click start menu then click "Windows Adminstrative Tools" then scroll down to "Active Directory Users and Computers"
 
 <img width="1105" height="662" alt="Screenshot 2026-06-08 112229" src="https://github.com/user-attachments/assets/61ef53ad-ea1a-4ab8-8a93-38f53bbd65e4" />
+
 I then click "mydomain.com" then scroll to "new" then click "Organizational Unit"
 
 <img width="794" height="683" alt="Screenshot 2026-06-08 112629" src="https://github.com/user-attachments/assets/ec60ee10-7d6d-4b8f-9901-bc4ec0e81270" />
 <img width="788" height="680" alt="Screenshot 2026-06-08 112932" src="https://github.com/user-attachments/assets/a49c83aa-f68a-4731-950c-19b98199148d" />
+
 Here I make two new OU: _EMPLOYEES and _ADMINS
 This OU provides a dedicated container for organizing standard user accounts.
 The _ADMINS OU separates privileged administrative accounts from regular user accounts for better security and management.
 
 <img width="1762" height="800" alt="Screenshot 2026-06-08 113205" src="https://github.com/user-attachments/assets/ee04e36b-761e-4655-acc7-8ad92fbc8525" />
 <img width="789" height="680" alt="Screenshot 2026-06-08 113545" src="https://github.com/user-attachments/assets/7ad7243e-c666-46a0-ac93-61e0b759d789" />
+
 I create a new admin user "Jane". Jane Doe (jane_admin)
 Creating an administrative user establishes a dedicated account for domain administration tasks.
 
 <img width="789" height="683" alt="Screenshot 2026-06-08 113649" src="https://github.com/user-attachments/assets/c5611e0d-6d23-4b20-b83f-612a03c3f6cb" />
+
 A new password is created. Using jane_admin going forward makes improves accountability, auditing, and security management.
 
 <img width="430" height="454" alt="Screenshot 2026-06-08 114341" src="https://github.com/user-attachments/assets/66d9179a-e544-464d-8442-432c43c03e10" />
 <img width="578" height="322" alt="Screenshot 2026-06-08 114747" src="https://github.com/user-attachments/assets/79953e9e-a6aa-4d9a-b0d0-3169951d494c" />
+
 Here I add Jane_admin to a security group. I right click Jsne then scroll down to properties. Then click Members Of then fill in "domain admins"
 I then log out of DC-1 and log into Jane Admin account using mydomain.com\jane_admin
 Using a dedicated admin account follows security best practices and separates administrative activities from standard accounts.
 
 <img width="397" height="198" alt="Screenshot 2026-06-08 115142" src="https://github.com/user-attachments/assets/7bd17f43-2b67-4b22-864b-21a5af9a7aec" />
+
 I click Run and type Log off to Log out of DC-1.
 
 <img width="405" height="213" alt="Screenshot 2026-06-08 115317" src="https://github.com/user-attachments/assets/0791ffa2-616e-429c-a3f9-bcd3fbcb30b6" />
+
 I use RDP to log into mydomain.com\jane_admin.
 
 <img width="1096" height="860" alt="Screenshot 2026-06-08 115647" src="https://github.com/user-attachments/assets/5da49dd7-90ca-49e9-9f91-0ab4bc44fd5d" />
+
 Inside Client 1. I click the start menu then settings. 
 
 <img width="372" height="427" alt="image" src="https://github.com/user-attachments/assets/5b20e132-02fc-48cb-b36b-8b57f27d6520" />
 <img width="373" height="425" alt="Screenshot 2026-06-08 120156" src="https://github.com/user-attachments/assets/2e126bc9-d59d-4ac6-9d71-88160275c938" />
+
 Here I click change computer name and change it from the workgroup to the domain.
 Domain joining allows the workstation to use centralized authentication and domain-based policies.
 
 <img width="418" height="270" alt="Screenshot 2026-06-08 120433" src="https://github.com/user-attachments/assets/bb6f0b09-8ff0-4218-a2b8-b07e662a7ec3" />
 <img width="274" height="138" alt="Screenshot 2026-06-08 120745" src="https://github.com/user-attachments/assets/aa773d97-7f46-4e25-bcb4-21190afd79fc" />
+
+
 Here I use Jane Admin password to join Clinet 1 to the domain. Then I restart Client 1
 
 <img width="717" height="364" alt="Screenshot 2026-06-08 121128" src="https://github.com/user-attachments/assets/14b838cd-e992-46f0-a8a0-0f43b47cc3ee" />
 <img width="1045" height="259" alt="Screenshot 2026-06-08 121255" src="https://github.com/user-attachments/assets/92a5e5a0-82d0-4b50-a00f-6ef8a8e5af52" />
+
 Here I verify that Client 1 has been added to Active Diretory Users and Computers (ADUC) 
 Confirming the computer object exists verifies that the domain join was successful.
 
@@ -191,27 +211,33 @@ Confirming the computer object exists verifies that the domain join was successf
 I configured Remote Desktop access for domain users, automated user provisioning through PowerShell, organized accounts within Active Directory organizational units, and validated user authentication by logging into a domain-joined workstation. This demonstrated identity management, access control, automation, and user lifecycle administration.
 
 <img width="405" height="211" alt="Screenshot 2026-06-08 122544" src="https://github.com/user-attachments/assets/64287034-973b-4776-b95f-eb93512a5e4f" />
+
 I log into Client 1 using Jane Admin. 
 Administrative access is required to configure Remote Desktop settings on the workstation
 
 <img width="1107" height="855" alt="Screenshot 2026-06-08 123029" src="https://github.com/user-attachments/assets/da40c756-006c-47bd-ab17-c904bec5ec27" />
 <img width="423" height="230" alt="Screenshot 2026-06-08 123410" src="https://github.com/user-attachments/assets/c291dc4c-0e17-414b-9f82-3a5f59ca9fe7" />
+
 Here I click menu then settings then Remote Desktop. Then I click "Users Accounts"
 I add domain users to log in using remote desktop
 
 <img width="728" height="524" alt="Screenshot 2026-06-08 123823" src="https://github.com/user-attachments/assets/7d8455af-ff23-4914-86a6-e39048c23311" />
+
 Log into DC-1 as jane_admin. I click start menu then open "PowerShell ISE" then right click to "Run as Administrator".	
 PowerShell ISE provides a scripting environment for automating administrative tasks.
 
 <img width="1232" height="674" alt="image" src="https://github.com/user-attachments/assets/a9643bbc-46a9-4824-93bb-2e655a6b191a" />
+
 Here I run a powershell script to create users. I Paste and Run User Creation Script.
 Automation allows administrators to efficiently provision multiple user accounts at once.
 
 <img width="1027" height="933" alt="Screenshot 2026-06-08 124607" src="https://github.com/user-attachments/assets/d5ebcfa9-5604-4218-968c-70830e7e21a4" />
+
 I then observe the Account Creation.
 Monitoring the script confirms successful account provisioning and identifies any errors.
 
 <img width="756" height="626" alt="Screenshot 2026-06-08 124908" src="https://github.com/user-attachments/assets/7ddac4b8-6d94-410b-a931-c5c64ecc643e" />
+
 Here I find user "gig.foc". I now verify Users in the _EMPLOYEES OU.	
 Confirming account placement ensures users are organized according to company standards.
 I then attempt to login Client 1 using a New User Account: "gig.foc"
@@ -220,6 +246,7 @@ Testing validates that the newly created account can successfully authenticate a
 <img width="598" height="549" alt="Screenshot 2026-06-08 125511" src="https://github.com/user-attachments/assets/89be53c4-6c0e-4efa-a08e-8817c37b18a9" />
 <img width="399" height="215" alt="Screenshot 2026-06-08 125656" src="https://github.com/user-attachments/assets/753bce05-62b0-4fb2-91e1-2fed7680c244" />
 <img width="379" height="368" alt="Screenshot 2026-06-08 125829" src="https://github.com/user-attachments/assets/ba231bb5-6d9c-430a-812f-3b8929ae87f7" />
+
 I first must log out of Client 1 as Jane. Then log in as gig.foc using Remote Desktop Protocol (RDP)
 
 
